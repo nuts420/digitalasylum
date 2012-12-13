@@ -1,0 +1,13 @@
+
+spring mvc
+http://www.mkyong.com/spring3/spring-3-mvc-hello-world-example/
+
+tiles
+http://viralpatel.net/blogs/spring-3-mvc-tiles-plugin-tutorial-example-eclipse/
+
+log4j
+http://www.mkyong.com/spring-mvc/spring-mvc-log4j-integration-example/
+
+
+*potential*
+http://www.avaje.org/

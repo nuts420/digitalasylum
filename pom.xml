@@ -1,0 +1,118 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>digitalasylum</groupId>
+  <artifactId>digitalasylum</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>digitalasylum</name>
+  <url>http://maven.apache.org</url>
+    <properties>
+        <spring.version>3.1.0.RELEASE</spring.version>
+    </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.5</version>
+      <scope>test</scope>
+    </dependency>
+
+      <!-- Log4j -->
+      <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <version>1.2.16</version>
+      </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>1.6.6</version>
+      </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>1.6.6</version>
+      </dependency>
+
+
+      <dependency>
+          <groupId>jstl</groupId>
+          <artifactId>jstl</artifactId>
+          <version>1.2</version>
+      </dependency>
+
+
+      <!-- spring -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+          <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-web</artifactId>
+          <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-orm</artifactId>
+          <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework.data</groupId>
+          <artifactId>spring-data-jpa</artifactId>
+          <version>1.1.2.RELEASE</version>
+      </dependency>
+
+      <!-- tiles -->
+      <dependency>
+          <groupId>org.apache.tiles</groupId>
+          <artifactId>tiles-extras</artifactId>
+          <version>2.2.2</version>
+      </dependency>
+
+      <!-- hibernate -->
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+          <version>4.1.8.Final</version>
+          <!-- will come with Hibernate core-->
+      </dependency>
+      <!-- The tutorials use the H2 in-memory database -->
+      <dependency>
+          <groupId>com.h2database</groupId>
+          <artifactId>h2</artifactId>
+          <version>1.2.145</version>
+      </dependency>
+
+
+  </dependencies>
+  <build>
+    <finalName>digitalasylum</finalName>
+      <plugins>
+          <plugin>
+              <groupId>org.mortbay.jetty</groupId>
+              <artifactId>jetty-maven-plugin</artifactId>
+              <version>8.1.5.v20120716</version>
+          </plugin>
+      </plugins>
+      <testResources>
+          <testResource>
+              <filtering>false</filtering>
+              <directory>src/test/java</directory>
+              <includes>
+                  <include>**/*.xml</include>
+              </includes>
+          </testResource>
+          <testResource>
+              <directory>src/test/resources</directory>
+          </testResource>
+      </testResources>
+  </build>
+</project>
