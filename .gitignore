@@ -146,3 +146,23 @@ digitalasylum.iml
 .idea/copyright/profiles_settings.xml
 
 .idea/compiler.xml
+
+.idea/libraries/Maven__org_springframework_spring_aop_3_2_0_RELEASE.xml
+
+.idea/libraries/Maven__org_springframework_spring_beans_3_2_0_RELEASE.xml
+
+.idea/libraries/Maven__org_springframework_spring_context_3_2_0_RELEASE.xml
+
+.idea/libraries/Maven__org_springframework_spring_core_3_2_0_RELEASE.xml
+
+.idea/libraries/Maven__org_springframework_spring_expression_3_2_0_RELEASE.xml
+
+.idea/libraries/Maven__org_springframework_spring_jdbc_3_2_0_RELEASE.xml
+
+.idea/libraries/Maven__org_springframework_spring_orm_3_2_0_RELEASE.xml
+
+.idea/libraries/Maven__org_springframework_spring_tx_3_2_0_RELEASE.xml
+
+.idea/libraries/Maven__org_springframework_spring_web_3_2_0_RELEASE.xml
+
+.idea/libraries/Maven__org_springframework_spring_webmvc_3_2_0_RELEASE.xml
