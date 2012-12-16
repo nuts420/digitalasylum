@@ -8,6 +8,9 @@ http://viralpatel.net/blogs/spring-3-mvc-tiles-plugin-tutorial-example-eclipse/
 log4j
 http://www.mkyong.com/spring-mvc/spring-mvc-log4j-integration-example/
 
+spring security
+http://www.mkyong.com/spring-security/spring-security-form-login-example/
 
 *potential*
 http://www.avaje.org/
+

@@ -394,3 +394,25 @@ target/digitalasylum/WEB-INF/spring/hibernate-config.xml
 target/digitalasylum/WEB-INF/tiles.xml
 
 target/digitalasylum/WEB-INF/web.xml
+
+target/classes/META-INF/persistence.xml
+
+target/classes/log4j.properties
+
+target/classes/us/digitalasylum/controller/ContactController.class
+
+target/classes/us/digitalasylum/controller/EventController.class
+
+target/classes/us/digitalasylum/controller/HelloController.class
+
+target/classes/us/digitalasylum/controller/IndexController.class
+
+target/classes/us/digitalasylum/controller/LoginController.class
+
+target/classes/us/digitalasylum/form/Contact.class
+
+target/classes/us/digitalasylum/repository/EventRepository.class
+
+target/classes/us/digitalasylum/repository/entities/Event.class
+
+target/test-classes/EntityManagerIllustrationTest.class

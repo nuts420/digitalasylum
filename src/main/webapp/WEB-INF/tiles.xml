@@ -35,5 +35,12 @@
         <put-attribute name="body" value="/WEB-INF/jsp/event_form.jsp" />
     </definition>
 
+    <definition name="login" extends="base.definition">
+        <put-attribute name="title" value="Login" />
+        <put-attribute name="body" value="/WEB-INF/jsp/login_form.jsp" />
+    </definition>
+
+
+
 
 </tiles-definitions>

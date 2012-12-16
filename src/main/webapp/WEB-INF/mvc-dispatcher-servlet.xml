@@ -16,6 +16,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>-->
 
+
     <bean id="tilesResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
     </bean>
@@ -25,5 +26,6 @@
     </bean>
 
     <import resource="spring/hibernate-config.xml"/>
+    <import resource="spring/spring-security.xml"/>
 
 </beans>
