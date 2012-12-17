@@ -10,7 +10,12 @@
 
 <ul id="menu">
     <li class="ui-state-disabled"><a href="#">Aberdeen</a></li>
-    <li><a href="#">Ada</a></li>
+    <li>
+        <a href="/post">Posts</a>
+        <ul>
+            <li><a href="/post/add">Add</a></li>
+        </ul>
+    </li>
     <li><a href="#">Adamsville</a></li>
     <li><a href="#">Addyston</a></li>
     <li>

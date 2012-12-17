@@ -6,9 +6,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title><tiles:insertAttribute name="title" ignore="true" /></title>
     <link type="text/css" rel="stylesheet" href="<tiles:getAsString name="style"/>"/>
-    <link href="css/smoothness/jquery-ui-1.9.2.custom.css" rel="stylesheet">
-    <script src="js/jquery-1.8.3.js"></script>
-    <script src="js/jquery-ui-1.9.2.custom.js"></script>
+    <link type="text/css" rel="stylesheet" href="<tiles:getAsString name="jQueryUIStyle"/>">
+    <script src="<tiles:getAsString name="jQuery"/>"></script>
+    <script src="<tiles:getAsString name="jQueryUI"/>"></script>
 </head>
 <body>
 <table border="1">

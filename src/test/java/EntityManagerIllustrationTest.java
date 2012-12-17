@@ -31,6 +31,7 @@ import javax.persistence.Persistence;
 
 import junit.framework.TestCase;
 import us.digitalasylum.repository.entities.Event;
+import us.digitalasylum.repository.entities.Post;
 
 /**
  * Illustrates basic use of Hibernate as a JPA provider.
@@ -71,4 +72,24 @@ public class EntityManagerIllustrationTest extends TestCase {
         entityManager.getTransaction().commit();
         entityManager.close();
 	}
+
+    public void testPost()
+    {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist( new Post( "Our very first event!", "Bla" ) );
+        entityManager.persist( new Post( "A follow up event", "Yep" ) );
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        // now lets pull events from the database and list them
+        entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        List<Post> result = entityManager.createQuery( "from Post", Post.class ).getResultList();
+        for ( Post post : result ) {
+            System.out.println( "Post (" + post.getCreateDate() + ") : " + post.getTitle() );
+        }
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
 }

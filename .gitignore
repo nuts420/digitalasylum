@@ -416,3 +416,5 @@ target/classes/us/digitalasylum/repository/EventRepository.class
 target/classes/us/digitalasylum/repository/entities/Event.class
 
 target/test-classes/EntityManagerIllustrationTest.class
+
+*.class

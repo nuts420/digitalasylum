@@ -13,4 +13,4 @@ http://www.mkyong.com/spring-security/spring-security-form-login-example/
 
 *potential*
 http://www.avaje.org/
-
+http://static.springsource.org/spring-framework/docs/3.2.0.RELEASE/spring-framework-reference/html/new-in-3.2.html
