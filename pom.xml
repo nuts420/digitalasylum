@@ -93,10 +93,15 @@
       </dependency>
 
       <!-- tiles -->
-      <dependency>
+<!--      <dependency>
           <groupId>org.apache.tiles</groupId>
           <artifactId>tiles-extras</artifactId>
           <version>2.2.2</version>
+      </dependency>-->
+      <dependency>
+          <groupId>org.apache.tiles</groupId>
+          <artifactId>tiles-extras</artifactId>
+          <version>3.0.0</version>
       </dependency>
 
       <!-- hibernate -->
