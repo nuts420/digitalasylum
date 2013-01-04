@@ -16,7 +16,11 @@
             <li><a href="/post/add">Add</a></li>
         </ul>
     </li>
-    <li><a href="#">Adamsville</a></li>
+    <li><a href="/feed">Feeds</a>
+        <ul>
+            <li><a href="/feed/add">Add</a></li>
+        </ul>
+    </li>
     <li><a href="#">Addyston</a></li>
     <li>
         <a href="#">Delphi</a>

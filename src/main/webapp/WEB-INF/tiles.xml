@@ -52,7 +52,14 @@
         <put-attribute name="title" value="Post"/>
         <put-attribute name="body" value="/WEB-INF/jsp/post_form.jsp"/>
     </definition>
-
+    <definition name="feed" extends="base.definition">
+        <put-attribute name="title" value="Feed"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/feed.jsp"/>
+    </definition>
+    <definition name="feed.add" extends="base.definition">
+        <put-attribute name="title" value="Feed"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/feed_form.jsp"/>
+    </definition>
 
 
 </tiles-definitions>

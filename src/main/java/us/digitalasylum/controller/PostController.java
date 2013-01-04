@@ -15,7 +15,7 @@ import java.util.Date;
 public class PostController {
 
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
 
 
     @RequestMapping({"/", ""})
