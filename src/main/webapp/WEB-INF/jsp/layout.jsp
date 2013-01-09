@@ -8,6 +8,12 @@
     <link type="text/css" rel="stylesheet" href="<tiles:getAsString name="jQueryUIStyle"/>">
     <script src="<tiles:getAsString name="jQuery"/>"></script>
     <script src="<tiles:getAsString name="jQueryUI"/>"></script>
+
+    <style>
+        #layout_menu{
+            vertical-align: top;
+        }
+    </style>
 </head>
 <body>
 <table border="1">
@@ -16,7 +22,7 @@
         </td>
     </tr>
     <tr>
-        <td width="300"><tiles:insertAttribute name="menu" /></td>
+        <td width="300" id="layout_menu"><tiles:insertAttribute name="menu" /></td>
         <td width="100%"><tiles:insertAttribute name="body" /></td>
     </tr>
     <tr>

@@ -9,7 +9,6 @@
 </style>
 
 <ul id="menu">
-    <li class="ui-state-disabled"><a href="#">Aberdeen</a></li>
     <li>
         <a href="/post">Posts</a>
         <ul>
@@ -21,13 +20,6 @@
             <li><a href="/feed/add">Add</a></li>
         </ul>
     </li>
-    <li><a href="#">Addyston</a></li>
-    <li>
-        <a href="#">Delphi</a>
-        <ul>
-            <li class="ui-state-disabled"><a href="#">Ada</a></li>
-            <li><a href="#">Saarland</a></li>
-            <li><a href="#">Salzburg</a></li>
-        </ul>
-    </li>
+    <li><a href="/channel">Channels</a></li>
+    <li><a href="/item">Items</a></li>
 </ul>

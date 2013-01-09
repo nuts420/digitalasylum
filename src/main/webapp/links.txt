@@ -18,3 +18,5 @@ http://www.springsource.org/spring-social#maven
 
 oauth2
 http://blog.cloudfoundry.org/2012/10/09/oauth-rest/
+
+http://www.javaworld.com/javaworld/jw-11-2007/jw-11-rome.html

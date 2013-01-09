@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import us.digitalasylum.repository.FeedRepository;
 import us.digitalasylum.repository.entities.Feed;
 import us.digitalasylum.repository.enums.FeedType;
+import us.digitalasylum.service.FeedService;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,6 +19,9 @@ public class FeedController {
 
     @Autowired
     private FeedRepository feedRepository;
+
+    @Autowired
+    private FeedService feedService;
 
     @RequestMapping({"/", ""})
     public ModelAndView index()
@@ -48,7 +52,8 @@ public class FeedController {
     @RequestMapping("/addFeed")
     public String process(@RequestParam("name") String name, @RequestParam("url") String url, @RequestParam("feedType") FeedType feedType)
     {
-        feedRepository.save(new Feed(name, url, feedType));
+        //feedRepository.save(new Feed(name, url, feedType));
+        feedService.initializeFeed(new Feed(name, url, feedType));
 
         return "redirect:/feed";
     }
