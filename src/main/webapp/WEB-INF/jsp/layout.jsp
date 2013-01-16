@@ -1,4 +1,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +10,8 @@
     <link type="text/css" rel="stylesheet" href="<tiles:getAsString name="jQueryUIStyle"/>">
     <script src="<tiles:getAsString name="jQuery"/>"></script>
     <script src="<tiles:getAsString name="jQueryUI"/>"></script>
+    <script type="text/javascript" src='<spring:url value="/js/jquery.dataTables.min.js"/>'></script>
+    <link type="text/css" rel="stylesheet" href="<spring:url value="/css/jquery.dataTables.css"/>">
 
     <style>
         #layout_menu{

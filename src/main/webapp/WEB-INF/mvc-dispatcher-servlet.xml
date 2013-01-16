@@ -27,6 +27,7 @@
     <mvc:annotation-driven />
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
+    <mvc:resources mapping="/images/**" location="/WEB-INF/images/"/>
 
     <import resource="spring/hibernate-config.xml"/>
     <import resource="spring/spring-security.xml"/>
