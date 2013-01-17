@@ -12,6 +12,7 @@
     <th>Title</th>
     <th>Link</th>
     <th>Description</th>
+    <th>Image</th>
     <th>Feed</th>
 </tr>
 </thead>
@@ -23,6 +24,7 @@
         <td>${channel.title}</td>
         <td>${channel.link}</td>
         <td>${channel.description}</td>
+        <td><a href="${channel.imageLink}"><img src="${channel.imageUrl}" alt="${channel.imageTitle}"></a></td>
         <td>${channel.feed.name}</td>
     </tr>
 

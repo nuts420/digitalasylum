@@ -13,7 +13,7 @@
     <tr>
         <th>Name</th>
         <th>Url</th>
-        <th>Type</th>
+        <th>Last Updated</th>
     </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
         <tr>
             <td>${feed.name}</td>
             <td>${feed.url}</td>
-            <td>${feed.feedType}</td>
+            <td>${feed.lastUpdated}</td>
         </tr>
 
     </c:forEach>

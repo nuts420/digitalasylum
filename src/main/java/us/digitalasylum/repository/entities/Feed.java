@@ -5,21 +5,34 @@ import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 import us.digitalasylum.repository.enums.FeedType;
 
+import java.util.Date;
+
 @Entity
 public class Feed {
     private Long id;
     private String url;
 
+    private Date lastUpdated;
     private String name;
-    private FeedType feedType;
+
+    //private FeedType feedType;
 
     public Feed(){
     }
 
-    public Feed(String name, String url, FeedType feedType){
+    public Feed(String name, String url){
         this.name = name;
         this.url = url;
-        this.feedType = feedType;
+        this.lastUpdated = new Date();
+    }
+
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 
     @Id
@@ -49,12 +62,12 @@ public class Feed {
         this.url = url;
     }
 
-    public FeedType getFeedType() {
+/*    public FeedType getFeedType() {
         return feedType;
     }
 
     public void setFeedType(FeedType feedType) {
         this.feedType = feedType;
-    }
+    }*/
 
 }

@@ -35,7 +35,7 @@ public class FeedService {
     @Autowired
     private ItemRepository itemRepository;
 
-    //@Transactional
+    @Transactional
     public void initializeFeed(Feed feed){
 
         SyndFeed feedSrc = null;
@@ -47,20 +47,27 @@ public class FeedService {
             SyndFeedInput input = new SyndFeedInput();
             feedSrc = input.build(new XmlReader(feedSource));
 
-        } catch (IOException e) {
+        }catch (IOException e) {
             logger.error("IO Problem while retrieving feed", e);
         }catch (FeedException e) {
             logger.error("Feed Problem while retrieving feed", e);
         }
 
         //create channel
-        Channel channel = new Channel(feedSrc.getTitle(), feedSrc.getLink(), feedSrc.getDescription(), feed);
+        Channel channel = new Channel(feedSrc.getTitle(), feedSrc.getLink(), feedSrc.getDescription(), feed, feedSrc.getImage().getUrl(), feedSrc.getImage().getTitle(), feedSrc.getImage().getLink());
         channel = channelRepository.save(channel);
 
         //create items  (entities)
         for(Object entry: feedSrc.getEntries())
         {
-            Item item = new Item(((SyndEntry)entry).getTitle(), ((SyndEntry)entry).getLink(), ((SyndEntry)entry).getDescription().toString(), channel);
+            SyndEntry syndEntry = (SyndEntry)entry;
+            //Item item = new Item(((SyndEntry)entry).getTitle(), ((SyndEntry)entry).getLink(), ((SyndEntry)entry).getDescription().toString(), channel);
+            Item item = new Item();
+            item.setTitle(syndEntry.getTitle());
+            item.setLink(syndEntry.getLink());
+            item.setChannel(channel);
+            item.setDescription(syndEntry.getDescription().getValue());
+
             itemRepository.save(item);
         }
 

@@ -39,21 +39,21 @@ public class FeedController {
     {
         ModelAndView mav = new ModelAndView("feed.add", "command", new Feed());
 
-        Map<String,String> feedTypeList = new LinkedHashMap<String,String>();
+/*        Map<String,String> feedTypeList = new LinkedHashMap<String,String>();
         feedTypeList.put(FeedType.ATOM.toString(), "Atom");
         feedTypeList.put(FeedType.RSS1.toString(), "RSS");
         feedTypeList.put(FeedType.RSS2.toString(), "RSS2");
 
-        mav.addObject("feedTypeList", feedTypeList);
+        mav.addObject("feedTypeList", feedTypeList);*/
 
         return mav;
     }
 
     @RequestMapping("/addFeed")
-    public String process(@RequestParam("name") String name, @RequestParam("url") String url, @RequestParam("feedType") FeedType feedType)
+    public String process(@RequestParam("name") String name, @RequestParam("url") String url)
     {
         //feedRepository.save(new Feed(name, url, feedType));
-        feedService.initializeFeed(new Feed(name, url, feedType));
+        feedService.initializeFeed(new Feed(name, url));
 
         return "redirect:/feed";
     }

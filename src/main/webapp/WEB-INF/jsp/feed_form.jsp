@@ -13,12 +13,12 @@
             <td><form:label path="url">Url</form:label></td>
             <td><form:input path="url" /></td>
         </tr>
-        <tr>
+<%--        <tr>
             <td><form:label path="feedType">Feed Type</form:label></td>
             <td>
                 <form:select path="feedType" items="${feedTypeList}" />
             </td>
-        </tr>
+        </tr>--%>
 
         <tr>
             <td colspan="2">
