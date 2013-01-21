@@ -4,14 +4,33 @@ package us.digitalasylum.repository.entities;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Item {
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     private long id;
+    @Column(length=500)
     private String title;
     private String link;
+    @Column(length=13000)
     private String description;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Channel channel;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date pubDate;
+    @Column(unique=true)
+    private String guid;
+
+    public String getGuid() {
+        return guid;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid;
+    }
 
     public Item(){
 
@@ -25,9 +44,14 @@ public class Item {
         this.channel = channel;
     }
 
-    @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
+    }
+
     public long getId() {
         return id;
     }
@@ -36,7 +60,6 @@ public class Item {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
     public Channel getChannel() {
         return channel;
     }
@@ -44,6 +67,7 @@ public class Item {
     public void setChannel(Channel channel) {
         this.channel = channel;
     }
+
     public String getTitle() {
         return title;
     }
@@ -60,8 +84,6 @@ public class Item {
         this.link = link;
     }
 
-
-    @Column(length=2000)
     public String getDescription() {
         return description;
     }
@@ -69,6 +91,5 @@ public class Item {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
 }

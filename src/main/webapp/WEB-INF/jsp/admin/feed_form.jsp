@@ -2,7 +2,7 @@
 
 
 <h2>Add Feed</h2>
-<form:form method="post" action="/feed/addFeed">
+<form:form method="post" action="/admin/feed/addFeed">
 
     <table>
         <tr>

@@ -2,6 +2,7 @@ package us.digitalasylum.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,7 +15,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/feed")
+@RequestMapping("/admin/feed")
 public class FeedController {
 
     @Autowired
@@ -39,22 +40,34 @@ public class FeedController {
     {
         ModelAndView mav = new ModelAndView("feed.add", "command", new Feed());
 
-/*        Map<String,String> feedTypeList = new LinkedHashMap<String,String>();
-        feedTypeList.put(FeedType.ATOM.toString(), "Atom");
-        feedTypeList.put(FeedType.RSS1.toString(), "RSS");
-        feedTypeList.put(FeedType.RSS2.toString(), "RSS2");
-
-        mav.addObject("feedTypeList", feedTypeList);*/
-
         return mav;
     }
 
     @RequestMapping("/addFeed")
     public String process(@RequestParam("name") String name, @RequestParam("url") String url)
     {
-        //feedRepository.save(new Feed(name, url, feedType));
-        feedService.initializeFeed(new Feed(name, url));
+        Feed feed = new Feed(name, url);
+        feed  = feedRepository.save(feed);
 
-        return "redirect:/feed";
+        feedService.updateFeed(feed.getId());
+
+        return "redirect:/admin/feed";
     }
+
+    @RequestMapping(value = "/update/{feedId}")
+    public String update(@PathVariable("feedId") Long feedId )
+    {
+        feedService.updateFeed(feedId);
+
+        return "redirect:/admin/feed";
+
+    }
+
+    @RequestMapping(value = "/delete/{feedId}")
+    public String delete(@PathVariable("feedId") Long feedId )
+    {
+        feedService.delete(feedId);
+        return "redirect:/admin/feed";
+    }
+
 }

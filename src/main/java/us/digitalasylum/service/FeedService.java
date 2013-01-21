@@ -20,6 +20,7 @@ import us.digitalasylum.repository.entities.Item;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 
 @Service
 public class FeedService {
@@ -36,11 +37,9 @@ public class FeedService {
     private ItemRepository itemRepository;
 
     @Transactional
-    public void initializeFeed(Feed feed){
-
+    public void updateFeed(Long feedId){
+        Feed feed = feedRepository.findOne(feedId);
         SyndFeed feedSrc = null;
-
-        feedRepository.save(feed);
 
         try{
             URL feedSource = new URL(feed.getUrl());
@@ -53,24 +52,56 @@ public class FeedService {
             logger.error("Feed Problem while retrieving feed", e);
         }
 
-        //create channel
-        Channel channel = new Channel(feedSrc.getTitle(), feedSrc.getLink(), feedSrc.getDescription(), feed, feedSrc.getImage().getUrl(), feedSrc.getImage().getTitle(), feedSrc.getImage().getLink());
-        channel = channelRepository.save(channel);
+        feed.setLastUpdated(new Date());
+        feedRepository.save(feed);
+
+        Channel channel = channelRepository.findByLink(feedSrc.getLink());
+        if(channel == null)
+        {
+            channel = new Channel();
+            channel.setTitle(feedSrc.getTitle());
+            channel.setDescription(feedSrc.getDescription());
+            channel.setLink(feedSrc.getLink());
+            if(feedSrc.getImage() != null)
+            {
+                channel.setImageTitle(feedSrc.getImage().getTitle());
+                channel.setImageLink(feedSrc.getImage().getLink());
+                channel.setImageUrl(feedSrc.getImage().getUrl());
+            }
+            channel.setFeed(feed);
+
+            channel = channelRepository.save(channel);
+        }
+
 
         //create items  (entities)
         for(Object entry: feedSrc.getEntries())
         {
             SyndEntry syndEntry = (SyndEntry)entry;
-            //Item item = new Item(((SyndEntry)entry).getTitle(), ((SyndEntry)entry).getLink(), ((SyndEntry)entry).getDescription().toString(), channel);
-            Item item = new Item();
-            item.setTitle(syndEntry.getTitle());
-            item.setLink(syndEntry.getLink());
-            item.setChannel(channel);
-            item.setDescription(syndEntry.getDescription().getValue());
 
-            itemRepository.save(item);
+            Item item = itemRepository.findByGuid(syndEntry.getUri());
+            if(item == null)
+            {
+                item = new Item();
+                item.setTitle(syndEntry.getTitle());
+                item.setLink(syndEntry.getLink());
+                item.setChannel(channel);
+                item.setDescription(syndEntry.getDescription().getValue());
+                item.setPubDate(syndEntry.getPublishedDate());
+                item.setGuid(syndEntry.getUri());
+
+                itemRepository.save(item);
+            }
         }
+    }
 
+    @Transactional
+    public void delete(Long feedId){
+        Feed feed = feedRepository.findOne(feedId);
+
+
+
+        feedRepository.delete(feed);
     }
 
 }

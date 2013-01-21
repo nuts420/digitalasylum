@@ -4,18 +4,32 @@ package us.digitalasylum.repository.entities;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Channel {
 
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     private long id;
     private String title;
+
+    @Column(unique=true)
     private String link;
+
+    @Column(length=500)
     private String description;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Feed feed;
     private String imageUrl;
     private String imageTitle;
     private String imageLink;
+
+    @OneToMany(mappedBy = "channel", cascade = CascadeType.ALL)
+    private List<Item> items;
+
 
     public Channel(){
 
@@ -29,6 +43,14 @@ public class Channel {
         this.imageUrl = imageUrl;
         this.imageTitle = imageTitle;
         this.imageLink = imageLink;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     public String getImageLink() {
@@ -55,9 +77,6 @@ public class Channel {
         this.imageUrl = imageUrl;
     }
 
-    @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
     public long getId() {
         return id;
     }
@@ -66,7 +85,6 @@ public class Channel {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
     public Feed getFeed() {
         return feed;
     }
@@ -91,7 +109,6 @@ public class Channel {
         this.link = link;
     }
 
-    @Column(length=500)
     public String getDescription() {
         return description;
     }

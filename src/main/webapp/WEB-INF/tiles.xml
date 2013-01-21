@@ -3,24 +3,40 @@
         "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-    <definition name="base.definition" template="/WEB-INF/jsp/layout.jsp">
+    <definition name="base.definition" template="/WEB-INF/jsp/layout/layout.jsp">
         <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
+        <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
         <put-attribute name="style" value="/css/default.css" />
         <put-attribute name="jQueryUIStyle" value="/css/smoothness/jquery-ui-1.9.2.custom.css" />
         <put-attribute name="jQuery" value="/js/jquery-1.8.3.js" />
         <put-attribute name="jQueryUI" value="/js/jquery-ui-1.9.2.custom.js" />
-        <put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/layout/menu.jsp" />
         <put-attribute name="body" value="" />
-        <put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
+    </definition>
+
+    <definition name="admin.definition" template="/WEB-INF/jsp/layout/layout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/jsp/layout/admin_header.jsp" />
+        <put-attribute name="style" value="/css/default.css" />
+        <put-attribute name="jQueryUIStyle" value="/css/smoothness/jquery-ui-1.9.2.custom.css" />
+        <put-attribute name="jQuery" value="/js/jquery-1.8.3.js" />
+        <put-attribute name="jQueryUI" value="/js/jquery-ui-1.9.2.custom.js" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/layout/admin_menu.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
     </definition>
 
     <definition name="index" extends="base.definition">
-        <put-attribute name="title" value="Contact Manager" />
+        <put-attribute name="title" value="Home" />
         <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
     </definition>
+    <definition name="admin.index" extends="admin.definition">
+        <put-attribute name="title" value="Admin Home" />
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/index.jsp" />
+    </definition>
 
-    <definition name="contact" extends="base.definition">
+<!--    <definition name="contact" extends="base.definition">
         <put-attribute name="title" value="Home" />
         <put-attribute name="body" value="/WEB-INF/jsp/contact.jsp" />
     </definition>
@@ -28,46 +44,54 @@
     <definition name="hello" extends="base.definition">
         <put-attribute name="title" value="Welcome" />
         <put-attribute name="body" value="/WEB-INF/jsp/hello.jsp" />
-    </definition>
+    </definition>-->
 
-    <definition name="event" extends="base.definition">
+<!--    <definition name="event" extends="base.definition">
         <put-attribute name="title" value="Event" />
         <put-attribute name="body" value="/WEB-INF/jsp/event.jsp" />
     </definition>
     <definition name="event.add" extends="base.definition">
         <put-attribute name="title" value="Event Add" />
         <put-attribute name="body" value="/WEB-INF/jsp/event_form.jsp" />
-    </definition>
+    </definition>-->
 
     <definition name="login" extends="base.definition">
         <put-attribute name="title" value="Login" />
         <put-attribute name="body" value="/WEB-INF/jsp/login_form.jsp" />
     </definition>
 
-    <definition name="post" extends="base.definition">
+    <definition name="category" extends="admin.definition">
+        <put-attribute name="title" value="Category"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/category.jsp"/>
+    </definition>
+    <definition name="category.add" extends="admin.definition">
+        <put-attribute name="title" value="Category"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/category_form.jsp"/>
+    </definition>
+    <definition name="post" extends="admin.definition">
         <put-attribute name="title" value="Post"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/post.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/post.jsp"/>
     </definition>
-    <definition name="post.add" extends="base.definition">
+    <definition name="post.add" extends="admin.definition">
         <put-attribute name="title" value="Post"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/post_form.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/post_form.jsp"/>
     </definition>
-    <definition name="feed" extends="base.definition">
+    <definition name="feed" extends="admin.definition">
         <put-attribute name="title" value="Feed"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/feed.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/feed.jsp"/>
     </definition>
-    <definition name="feed.add" extends="base.definition">
+    <definition name="feed.add" extends="admin.definition">
         <put-attribute name="title" value="Feed"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/feed_form.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/feed_form.jsp"/>
     </definition>
 
-    <definition name="channel" extends="base.definition">
+    <definition name="channel" extends="admin.definition">
         <put-attribute name="title" value="Channel"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/channel.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/channel.jsp"/>
     </definition>
-    <definition name="item" extends="base.definition">
+    <definition name="item" extends="admin.definition">
         <put-attribute name="title" value="Item"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/item.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/item.jsp"/>
     </definition>
 
 </tiles-definitions>

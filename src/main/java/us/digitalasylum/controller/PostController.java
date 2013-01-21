@@ -11,7 +11,7 @@ import us.digitalasylum.repository.entities.Post;
 import java.util.Date;
 
 @Controller
-@RequestMapping("/post")
+@RequestMapping("/admin/post")
 public class PostController {
 
     @Autowired
@@ -42,6 +42,6 @@ public class PostController {
     {
         postRepository.save(new Post(title, body, new Date()));
 
-        return "redirect:/post";
+        return "redirect:/admin/post";
     }
 }

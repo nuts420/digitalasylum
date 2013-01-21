@@ -2,7 +2,7 @@
 
 
 <h2>Add Post</h2>
-<form:form method="post" action="/post/addPost">
+<form:form method="post" action="/admin/post/addPost">
 
     <table>
         <tr>

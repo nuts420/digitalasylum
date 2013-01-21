@@ -8,7 +8,7 @@ import us.digitalasylum.repository.ItemRepository;
 import us.digitalasylum.repository.entities.Item;
 
 @Controller
-@RequestMapping("/item")
+@RequestMapping("/admin/item")
 public class ItemController {
 
     @Autowired

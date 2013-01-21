@@ -9,12 +9,26 @@ import java.util.Date;
 
 @Entity
 public class Feed {
+
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     private Long id;
     private String url;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdated;
     private String name;
+    @OneToOne(mappedBy = "feed", cascade = CascadeType.ALL)
+    private Channel channel;
 
+    public Channel getChannel() {
+        return channel;
+    }
+
+    public void setChannel(Channel channel) {
+        this.channel = channel;
+    }
     //private FeedType feedType;
 
     public Feed(){
@@ -26,7 +40,6 @@ public class Feed {
         this.lastUpdated = new Date();
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
     public Date getLastUpdated() {
         return lastUpdated;
     }
@@ -35,9 +48,6 @@ public class Feed {
         this.lastUpdated = lastUpdated;
     }
 
-    @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
     public Long getId() {
         return id;
     }
@@ -61,13 +71,4 @@ public class Feed {
     public void setUrl(String url) {
         this.url = url;
     }
-
-/*    public FeedType getFeedType() {
-        return feedType;
-    }
-
-    public void setFeedType(FeedType feedType) {
-        this.feedType = feedType;
-    }*/
-
 }
