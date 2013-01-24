@@ -3,7 +3,7 @@ package us.digitalasylum.repository.entities;
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
-import us.digitalasylum.repository.enums.FeedType;
+
 
 import java.util.Date;
 
@@ -15,12 +15,31 @@ public class Feed {
     @GenericGenerator(name="increment", strategy = "increment")
     private Long id;
     private String url;
-
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdated;
     private String name;
     @OneToOne(mappedBy = "feed", cascade = CascadeType.ALL)
     private Channel channel;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Category category;
+
+    public Feed(){
+    }
+
+    public Feed(String name, String url, Category category){
+        this.name = name;
+        this.url = url;
+        this.category = category;
+        this.lastUpdated = new Date();
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Channel getChannel() {
         return channel;
@@ -28,16 +47,6 @@ public class Feed {
 
     public void setChannel(Channel channel) {
         this.channel = channel;
-    }
-    //private FeedType feedType;
-
-    public Feed(){
-    }
-
-    public Feed(String name, String url){
-        this.name = name;
-        this.url = url;
-        this.lastUpdated = new Date();
     }
 
     public Date getLastUpdated() {

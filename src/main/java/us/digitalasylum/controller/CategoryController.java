@@ -2,9 +2,8 @@ package us.digitalasylum.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import us.digitalasylum.repository.CategoryRepository;
 import us.digitalasylum.repository.entities.Category;
@@ -28,20 +27,37 @@ public class CategoryController {
     }
 
     @RequestMapping("/add")
-    public ModelAndView add()
+    public ModelAndView addForm()
     {
         ModelAndView mav = new ModelAndView("category.add", "command", new Category());
 
         return mav;
     }
 
-    @RequestMapping("/addCategory")
-    public String process(@RequestParam("name") String name)
+    @RequestMapping(value= "/add", method= RequestMethod.POST)
+    public String add(@RequestParam("name") String name)
     {
         Category category = new Category(name);
         category  = categoryRepository.save(category);
 
 
+        return "redirect:/admin/category";
+    }
+
+    @RequestMapping("/edit/{categoryId}")
+    public ModelAndView editForm(@PathVariable("categoryId") Long categoryId)
+    {
+        ModelAndView mav = new ModelAndView("category.edit");
+        Category category = categoryRepository.findOne(categoryId);
+        mav.addObject("category", category);
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/edit/{categoryId}", method=RequestMethod.POST)
+    public String edit(@ModelAttribute("category") Category category, BindingResult result )
+    {
+        categoryRepository.save(category);
         return "redirect:/admin/category";
     }
 
@@ -52,13 +68,4 @@ public class CategoryController {
         return "redirect:/admin/category";
     }
 
-/*    @RequestMapping(value = "/edit/{categoryId}")
-    public ModelAndView edit(@PathVariable("categoryId") Long categoryId )
-    {
-        Category category = categoryRepository.findOne(categoryId);
-
-
-        //categoryRepository.delete(categoryId);
-        //return "redirect:/category";
-    }*/
 }

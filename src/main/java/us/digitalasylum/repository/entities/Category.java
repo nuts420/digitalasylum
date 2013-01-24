@@ -6,6 +6,9 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Category {
@@ -15,6 +18,8 @@ public class Category {
     @GenericGenerator(name="increment", strategy = "increment")
     private Long id;
     private String name;
+    @OneToMany(mappedBy = "category")
+    private List<Feed> feed;
 
     public Category(){
 
@@ -22,6 +27,14 @@ public class Category {
 
     public Category(String name){
         this.name = name;
+    }
+
+    public List<Feed> getFeed() {
+        return feed;
+    }
+
+    public void setFeed(List<Feed> feed) {
+        this.feed = feed;
     }
 
     public String getName() {

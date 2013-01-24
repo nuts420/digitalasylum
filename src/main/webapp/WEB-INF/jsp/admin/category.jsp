@@ -31,6 +31,7 @@
             <td>
                 <%--<a class="button" href="<spring:url value="/category/edit/${category.id}"/>">edit</a>--%>
                 <a class="button" href="<spring:url value="/admin/category/delete/${category.id}"/>">delete</a>
+                <a class="button" href="<spring:url value="/admin/category/edit/${category.id}"/>">edit</a>
             </td>
         </tr>
 

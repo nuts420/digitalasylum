@@ -21,6 +21,7 @@
         <th>Name</th>
         <th>Url</th>
         <th>Last Updated</th>
+        <th>Category</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -32,6 +33,7 @@
             <td>${feed.name}</td>
             <td>${feed.url}</td>
             <td>${feed.lastUpdated}</td>
+            <td>${feed.category.name}</td>
             <td>
                 <a class="button" href="<spring:url value="/admin/feed/update/${feed.id}"/>">update</a>
                 <a class="button" href="<spring:url value="/admin/feed/delete/${feed.id}"/>">delete</a>
