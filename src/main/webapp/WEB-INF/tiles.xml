@@ -86,7 +86,11 @@
     </definition>
     <definition name="feed.add" extends="admin.definition">
         <put-attribute name="title" value="Feed"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/admin/feed_form.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/feed_add.jsp"/>
+    </definition>
+    <definition name="feed.edit" extends="admin.definition">
+        <put-attribute name="title" value="Feed"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/feed_edit.jsp"/>
     </definition>
 
     <definition name="channel" extends="admin.definition">

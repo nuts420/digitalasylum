@@ -2,19 +2,14 @@ package us.digitalasylum.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import us.digitalasylum.repository.CategoryRepository;
 import us.digitalasylum.repository.FeedRepository;
 import us.digitalasylum.repository.entities.Category;
 import us.digitalasylum.repository.entities.Feed;
-import us.digitalasylum.repository.enums.FeedType;
 import us.digitalasylum.service.FeedService;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/admin/feed")
@@ -41,7 +36,7 @@ public class FeedController {
     }
 
     @RequestMapping("/add")
-    public ModelAndView add()
+    public ModelAndView addForm()
     {
         ModelAndView mav = new ModelAndView("feed.add", "command", new Feed());
         mav.addObject("categories", categoryRepository.findAll());
@@ -49,14 +44,14 @@ public class FeedController {
         return mav;
     }
 
-    @RequestMapping("/addFeed")
-    public String process(@RequestParam("name") String name, @RequestParam("url") String url, @RequestParam("category") Long categoryId)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String add(@RequestParam("name") String name, @RequestParam("url") String url, @RequestParam("category") Long categoryId)
     {
         Category category = categoryRepository.findOne(categoryId);
         Feed feed = new Feed(name, url, category);
         feed  = feedRepository.save(feed);
 
-        feedService.updateFeed(feed.getId());
+        feedService.fetchItems(feed.getId());
 
         return "redirect:/admin/feed";
     }
@@ -64,10 +59,31 @@ public class FeedController {
     @RequestMapping(value = "/update/{feedId}")
     public String update(@PathVariable("feedId") Long feedId )
     {
-        feedService.updateFeed(feedId);
+        feedService.fetchItems(feedId);
 
         return "redirect:/admin/feed";
 
+    }
+
+    @RequestMapping("/edit/{feedId}")
+    public ModelAndView editForm(@PathVariable("feedId") Long feedId)
+    {
+        ModelAndView mav = new ModelAndView("feed.edit");
+        Feed feed = feedRepository.findOne(feedId);
+        mav.addObject("feed", feed);
+        //mav.addObject("categoryId", feed.getCategory().getId());
+        mav.addObject("categories", categoryRepository.findAll());
+        //mav.addAttribute("visit", visit);
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/editSubmit", method=RequestMethod.POST)
+    public String edit(@ModelAttribute("feed") Feed feed, BindingResult result )
+    {
+        feedRepository.save(feed);
+        feedService.fetchItems(feed.getId());
+        return "redirect:/admin/feed";
     }
 
     @RequestMapping(value = "/delete/{feedId}")

@@ -15,7 +15,7 @@ public class Item {
     @Column(length=500)
     private String title;
     private String link;
-    @Column(length=13000)
+    @Column(length=20000)
     private String description;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Channel channel;

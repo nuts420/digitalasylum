@@ -10,9 +10,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import us.digitalasylum.repository.CategoryRepository;
 import us.digitalasylum.repository.ChannelRepository;
 import us.digitalasylum.repository.FeedRepository;
 import us.digitalasylum.repository.ItemRepository;
+import us.digitalasylum.repository.entities.Category;
 import us.digitalasylum.repository.entities.Channel;
 import us.digitalasylum.repository.entities.Feed;
 import us.digitalasylum.repository.entities.Item;
@@ -36,8 +38,11 @@ public class FeedService {
     @Autowired
     private ItemRepository itemRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Transactional
-    public void updateFeed(Long feedId){
+    public void fetchItems(Long feedId){
         Feed feed = feedRepository.findOne(feedId);
         SyndFeed feedSrc = null;
 
@@ -86,7 +91,12 @@ public class FeedService {
                 item.setTitle(syndEntry.getTitle());
                 item.setLink(syndEntry.getLink());
                 item.setChannel(channel);
-                item.setDescription(syndEntry.getDescription().getValue());
+                String description = syndEntry.getDescription().getValue();
+                int maxLength = 20000;
+                if(description.length() > maxLength){
+                    description = description.substring(0, maxLength);
+                }
+                item.setDescription(description);
                 item.setPubDate(syndEntry.getPublishedDate());
                 item.setGuid(syndEntry.getUri());
 
@@ -99,9 +109,17 @@ public class FeedService {
     public void delete(Long feedId){
         Feed feed = feedRepository.findOne(feedId);
 
-
-
         feedRepository.delete(feed);
+    }
+
+    @Transactional
+    public void update(Feed feed, Long categoryId){
+
+        Category category = categoryRepository.findOne(categoryId);
+        feed.setCategory(category);
+
+        feedRepository.save(feed);
+        return;
     }
 
 }
