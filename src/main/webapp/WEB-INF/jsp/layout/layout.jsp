@@ -13,24 +13,34 @@
     <script type="text/javascript" src='<spring:url value="/js/jquery.dataTables.min.js"/>'></script>
     <link type="text/css" rel="stylesheet" href="<spring:url value="/css/jquery.dataTables.css"/>">
 
-    <style>
-        #layout_menu{
-            vertical-align: top;
-        }
-    </style>
+<style>
+    #layout_menu{
+        vertical-align: top;
+    }
+    #body{
+        padding: 20px;
+        background-color: white;
+        border: 1px solid #aaaaaa;
+        border-radius: 4px;
+    }
+    #footer{
+        text-align: center;
+    }
+
+</style>
 </head>
 <body>
-<table border="1">
+<table>
     <tr>
         <td height="30" colspan="2"><tiles:insertAttribute name="header" />
         </td>
     </tr>
     <tr>
         <td width="300" id="layout_menu"><tiles:insertAttribute name="menu" /></td>
-        <td width="100%"><tiles:insertAttribute name="body" /></td>
+        <td width="100%"><div id="body"><tiles:insertAttribute name="body" /></div></td>
     </tr>
     <tr>
-        <td height="30" colspan="2"><tiles:insertAttribute name="footer" />
+        <td id="footer" height="30" colspan="2"><tiles:insertAttribute name="footer" />
         </td>
     </tr>
 </table>

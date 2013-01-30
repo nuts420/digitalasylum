@@ -6,7 +6,7 @@
 
 <script>
     $(function() {
-        $('#items').dataTable();
+        $('#items').dataTable({"bJQueryUI": true});
     } );
 </script>
 <style>

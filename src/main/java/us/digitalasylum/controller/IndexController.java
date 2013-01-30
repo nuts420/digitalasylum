@@ -11,8 +11,12 @@ import us.digitalasylum.repository.CategoryRepository;
 import us.digitalasylum.repository.FeedRepository;
 import us.digitalasylum.repository.ItemRepository;
 import us.digitalasylum.repository.entities.Category;
+import us.digitalasylum.repository.entities.Channel;
 import us.digitalasylum.repository.entities.Feed;
 import us.digitalasylum.repository.entities.Item;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -47,7 +51,8 @@ public class IndexController {
 
         mav.addObject("categories", categories);
 
-        Iterable<Item> itemList = itemRepository.findByChannelFeedCategory_Id(categoryId);
+        Iterable<Item> itemList = itemRepository.findByChannel_Feed_Category_Id(categoryId);
+
         mav.addObject("items", itemList);
 
         return mav;

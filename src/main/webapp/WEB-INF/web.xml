@@ -14,6 +14,11 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>mvc-dispatcher</servlet-name>
         <servlet-class>
@@ -31,10 +36,6 @@
         <url-pattern>/css/</url-pattern>
     </servlet-mapping>-->
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
-    </context-param>
 
     <listener>
         <listener-class>

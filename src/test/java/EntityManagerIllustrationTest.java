@@ -77,8 +77,8 @@ public class EntityManagerIllustrationTest extends TestCase {
     {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist( new Post( "Our very first event!", "Bla" ) );
-        entityManager.persist( new Post( "A follow up event", "Yep" ) );
+        entityManager.persist( new Post( "Our very first event!", "Bla", new Date() ) );
+        entityManager.persist( new Post( "A follow up event", "Yep", new Date() ) );
         entityManager.getTransaction().commit();
         entityManager.close();
 
