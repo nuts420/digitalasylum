@@ -59,6 +59,10 @@
         <put-attribute name="title" value="Login" />
         <put-attribute name="body" value="/WEB-INF/jsp/login_form.jsp" />
     </definition>
+    <definition name="openid.login" extends="base.definition">
+        <put-attribute name="title" value="Login" />
+        <put-attribute name="body" value="/WEB-INF/jsp/openid_login.jsp" />
+    </definition>
 
     <definition name="category" extends="admin.definition">
         <put-attribute name="title" value="Category"/>

@@ -12,7 +12,9 @@
         <intercept-url pattern="/post/add*" access="ROLE_USER" />
         <intercept-url pattern="/feed/add*" access="ROLE_USER" />-->
         <intercept-url pattern="/admin/**" access="ROLE_USER" />
-        <form-login login-page="/login" default-target-url="/welcome"
+<!--        <form-login login-page="/login" default-target-url="/welcome"
+                    authentication-failure-url="/loginfailed" />-->
+        <openid-login login-page="/login" default-target-url="/welcome"
                     authentication-failure-url="/loginfailed" />
         <logout logout-success-url="/logout" />
     </http>
@@ -20,9 +22,11 @@
     <!-- 123456 -->
     <authentication-manager>
         <authentication-provider>
-            <password-encoder hash="sha" />
+            <!--<password-encoder hash="sha" />-->
             <user-service>
-                <user name="admin" password="7c4a8d09ca3762af61e59520943dc26494f8941b" authorities="ROLE_USER" />
+                <!--<user name="admin" password="7c4a8d09ca3762af61e59520943dc26494f8941b" authorities="ROLE_USER" />-->
+                <user name="https://www.google.com/accounts/o8/id?id=AItOawnkiNWFgvRrzH3Xc2lRWaEx1QhTkmenpi8"
+                               password="" authorities="ROLE_USER, ROLE_ADMIN" />
             </user-service>
         </authentication-provider>
     </authentication-manager>

@@ -11,7 +11,10 @@
     <script src="<tiles:getAsString name="jQuery"/>"></script>
     <script src="<tiles:getAsString name="jQueryUI"/>"></script>
     <script type="text/javascript" src='<spring:url value="/js/jquery.dataTables.min.js"/>'></script>
+    <script type="text/javascript" src='<spring:url value="/js/openid-en.js"/>'></script>
+    <script type="text/javascript" src='<spring:url value="/js/openid-jquery.js"/>'></script>
     <link type="text/css" rel="stylesheet" href="<spring:url value="/css/jquery.dataTables.css"/>">
+    <link type="text/css" rel="stylesheet" href="<spring:url value="/css/openid.css"/>">
 
 <style>
     #layout_menu{

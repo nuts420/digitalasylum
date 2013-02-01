@@ -29,7 +29,7 @@ public class LoginController {
     @RequestMapping(value="/login", method = RequestMethod.GET)
     public String login(ModelMap model) {
 
-        return "login";
+        return "openid.login";
 
     }
 
@@ -37,14 +37,14 @@ public class LoginController {
     public String loginerror(ModelMap model) {
 
         model.addAttribute("error", "true");
-        return "login";
+        return "openid.login";
 
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logout(ModelMap model) {
 
-        return "login";
+        return "openid.login";
 
     }
 
