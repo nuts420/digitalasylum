@@ -13,6 +13,10 @@
             <td><form:label path="name">Name</form:label></td>
             <td><form:input path="name" /></td>
         </tr>
+        <tr>
+            <td><form:label path="ordinal">Ordinal</form:label></td>
+            <td><form:input path="ordinal" /></td>
+        </tr>
 
             <%--        <tr>
                         <td><form:label path="feedType">Feed Type</form:label></td>

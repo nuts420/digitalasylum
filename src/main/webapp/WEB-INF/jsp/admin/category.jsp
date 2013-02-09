@@ -19,6 +19,7 @@
     <thead>
     <tr>
         <th>Name</th>
+        <th>Ordinal</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -28,6 +29,7 @@
     <c:forEach var="category" items="${categories}">
         <tr>
             <td>${category.name}</td>
+            <td>${category.ordinal}</td>
             <td>
                 <%--<a class="button" href="<spring:url value="/category/edit/${category.id}"/>">edit</a>--%>
                 <a class="button" href="<spring:url value="/admin/category/delete/${category.id}"/>">delete</a>

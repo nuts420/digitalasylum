@@ -1,4 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <h1>Login</h1>
 <div id="login-error">${error}</div>
@@ -11,8 +13,8 @@
     </div>
 </c:if>
 
-<%--<c:url var="logoUrl" value="/resources/openidlogosmall.png" />
-<p><img src="${logoUrl}"></img>Login with OpenID:</p>--%>
+<spring:url var="logoUrl" value="/images/openidlogosmall.png" />
+<p><img src="${logoUrl}"/>Login with OpenID:</p>
 <c:url var="openIDLoginUrl" value="/j_spring_openid_security_check" />
 <form action="${openIDLoginUrl}" method="post" >
     <label for="openid_identifier">OpenID Login</label>:
@@ -22,8 +24,8 @@
 
 <hr/>
 
-<%--<c:url var="googleLogoUrl" value="/resources/google-logo.png" />
-<img src="${googleLogoUrl}"></img>--%>
+<spring:url var="googleLogoUrl" value="/images/google-logo.png" />
+<img src="${googleLogoUrl}"/>
 <form action="<c:url value='/j_spring_openid_security_check' />" method="post">
     For Google users:
     <input name="openid_identifier" type="hidden" value="https://www.google.com/accounts/o8/id"/>

@@ -1,3 +1,5 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <style>
     .ui-menu { 
         width: 150px;
@@ -34,6 +36,9 @@
     <li><a href="/admin/channel">Channels</a></li>
     <li>
         <a href="/admin/item">Items</a>
+    </li>
+    <li>
+        <a href="<spring:url value="/j_spring_security_logout" />" > Logout</a>
     </li>
 </ul>
 

@@ -122,4 +122,14 @@ public class FeedService {
         return;
     }
 
+    @Transactional
+    public void fetchAllItems()
+    {
+        Iterable<Feed> feeds = feedRepository.findAll();
+
+        for(Feed feed: feeds){
+            fetchItems(feed.getId());
+        }
+    }
+
 }

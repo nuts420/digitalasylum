@@ -11,12 +11,21 @@
 <!--        <intercept-url pattern="/welcome*" access="ROLE_USER" />
         <intercept-url pattern="/post/add*" access="ROLE_USER" />
         <intercept-url pattern="/feed/add*" access="ROLE_USER" />-->
-        <intercept-url pattern="/admin/**" access="ROLE_USER" />
+        <intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+        <intercept-url pattern="/user/**" access="ROLE_USER" />
 <!--        <form-login login-page="/login" default-target-url="/welcome"
                     authentication-failure-url="/loginfailed" />-->
-        <openid-login login-page="/login" default-target-url="/welcome"
-                    authentication-failure-url="/loginfailed" />
-        <logout logout-success-url="/logout" />
+        <openid-login login-page="/login" default-target-url="/admin/" authentication-failure-url="/loginfailed" >
+            <attribute-exchange>
+                <openid-attribute name="axContactEmail" type="http://axschema.org/contact/email" required="true"/>
+                <openid-attribute name="oiContactEmail" type="http://schema.openid.net/contact/email" required="true"/>
+                <openid-attribute name="axNamePersonFullname" type="http://axschema.org/namePerson" required="true"/>
+                <openid-attribute name="axNamePersonFriendlyName" type="http://axschema.org/namePerson/friendly" required="true"/>
+                <openid-attribute name="axNamePersonFirstName" type="http://axschema.org/namePerson/first" required="true"/>
+                <openid-attribute name="axNamePersonLastName" type="http://axschema.org/namePerson/last" required="true"/>
+            </attribute-exchange>
+        </openid-login>
+        <logout invalidate-session="true" logout-success-url="/login" logout-url="/logout" />
     </http>
 
     <!-- 123456 -->

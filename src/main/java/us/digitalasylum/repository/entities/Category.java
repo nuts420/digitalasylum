@@ -18,15 +18,24 @@ public class Category {
     @GenericGenerator(name="increment", strategy = "increment")
     private Long id;
     private String name;
+    private Integer ordinal;
     @OneToMany(mappedBy = "category")
     private List<Feed> feed;
 
     public Category(){
 
     }
-
-    public Category(String name){
+    public Category(String name, Integer order){
         this.name = name;
+        this.ordinal = order;
+    }
+
+    public Integer getOrdinal() {
+        return ordinal;
+    }
+
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
     public List<Feed> getFeed() {

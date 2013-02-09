@@ -4,14 +4,21 @@ package us.digitalasylum.controller;
 import java.security.Principal;
 
 import freemarker.template.TemplateModelAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import us.digitalasylum.repository.CategoryRepository;
+import us.digitalasylum.repository.entities.Category;
 
 @Controller
 public class LoginController {
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @RequestMapping(value="/welcome", method = RequestMethod.GET)
     public ModelAndView printWelcome(ModelMap model, Principal principal ) {
@@ -27,9 +34,15 @@ public class LoginController {
     }
 
     @RequestMapping(value="/login", method = RequestMethod.GET)
-    public String login(ModelMap model) {
+    public ModelAndView login(ModelMap model) {
+        ModelAndView mav = new ModelAndView("openid.login");
 
-        return "openid.login";
+        Sort sort = new Sort(Sort.Direction.ASC, "ordinal");
+        Iterable<Category> categories = categoryRepository.findAll(sort);
+
+        mav.addObject("categories", categories);
+
+        return mav;
 
     }
 

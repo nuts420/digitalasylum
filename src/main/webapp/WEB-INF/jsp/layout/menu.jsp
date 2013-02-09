@@ -10,34 +10,6 @@
 </style>
 
 <ul id="menu">
-    <li>
-        <a href="/admin">Admin</a>
-<%--        <ul>
-            <li>
-                <a href="/category">Categories</a>
-                <ul>
-                    <li><a href="/category/add">Add</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="/post">Posts</a>
-                <ul>
-                    <li><a href="/post/add">Add</a></li>
-                </ul>
-            </li>
-            <li><a href="/feed">Feeds</a>
-                <ul>
-                    <li><a href="/feed/add">Add</a></li>
-                </ul>
-            </li>
-            <li><a href="/channel">Channels</a></li>
-            <li><a href="/item">Items</a></li>
-
-
-        </ul>--%>
-
-    </li>
-
     <c:forEach var="category" items="${categories}">
         <li>
             <a href="/category/${category.id}">${category.name}</a>

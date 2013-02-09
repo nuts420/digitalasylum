@@ -35,10 +35,10 @@ public class CategoryController {
     }
 
     @RequestMapping(value= "/add", method= RequestMethod.POST)
-    public String add(@RequestParam("name") String name)
+    public String add(@RequestParam("name") String name, @RequestParam("ordinal") Integer ordinal)
     {
-        Category category = new Category(name);
-        category  = categoryRepository.save(category);
+        Category category = new Category(name, ordinal);
+        category = categoryRepository.save(category);
 
 
         return "redirect:/admin/category";

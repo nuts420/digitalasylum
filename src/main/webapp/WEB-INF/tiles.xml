@@ -107,7 +107,7 @@
     </definition>
     <definition name="public.item" extends="base.definition">
         <put-attribute name="title" value="Item"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/admin/item.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/item.jsp"/>
     </definition>
 
 </tiles-definitions>
