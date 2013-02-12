@@ -16,4 +16,5 @@ public interface ItemRepository extends PagingAndSortingRepository<Item,Long> {
     public List<Item> findByChannel_Feed_Category_IdOrderByPubDateDesc(@Param("categoryId") Long id);
     public List<Item> findByChannel_Feed_Category_Id(@Param("categoryId") Long id);
     public List<Item> findByChannel_Feed_Category_Id(@Param("categoryId") Long id, Sort sort);
+    public List<Item> findByChannel_Feed_Category_Id(@Param("categoryId") Long id, Pageable page);
 }

@@ -34,12 +34,12 @@
 <body>
 <table>
     <tr>
-        <td height="30" colspan="2"><tiles:insertAttribute name="header" />
+        <td colspan="2"><tiles:insertAttribute name="header" />
         </td>
     </tr>
     <tr>
         <td width="300" id="layout_menu"><tiles:insertAttribute name="menu" /></td>
-        <td width="100%"><div id="body"><tiles:insertAttribute name="body" /></div></td>
+        <td width="100%" style="vertical-align: top;"><div id="body"><tiles:insertAttribute name="body" /></div></td>
     </tr>
     <tr>
         <td id="footer" height="30" colspan="2"><tiles:insertAttribute name="footer" />

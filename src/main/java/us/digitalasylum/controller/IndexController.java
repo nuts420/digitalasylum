@@ -1,6 +1,7 @@
 package us.digitalasylum.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefaults;
@@ -56,7 +57,10 @@ public class IndexController {
 
         //Sort itemSort = new Sort(Sort.Direction.DESC, "pubDate");
         //Iterable<Item> itemList = itemRepository.findByChannel_Feed_Category_Id(categoryId, itemSort);
-        Iterable<Item> itemList = itemRepository.findByChannel_Feed_Category_IdOrderByPubDateDesc(categoryId);
+        //Iterable<Item> itemList = itemRepository.findByChannel_Feed_Category_IdOrderByPubDateDesc(categoryId);
+
+        Pageable page = new PageRequest(0, 40, new Sort(Sort.Direction.DESC, "pubDate"));
+        Iterable<Item> itemList = itemRepository.findByChannel_Feed_Category_Id(categoryId, page);
 
 
         mav.addObject("items", itemList);
