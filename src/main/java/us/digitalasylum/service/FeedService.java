@@ -1,6 +1,7 @@
 package us.digitalasylum.service;
 
 
+import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
@@ -20,6 +21,7 @@ import us.digitalasylum.repository.entities.Feed;
 import us.digitalasylum.repository.entities.Item;
 
 
+import javax.print.attribute.standard.DateTimeAtCompleted;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -91,14 +93,20 @@ public class FeedService {
                 item.setTitle(syndEntry.getTitle());
                 item.setLink(syndEntry.getLink());
                 item.setChannel(channel);
-                String description = syndEntry.getDescription().getValue();
-                int maxLength = 20000;
-                if(description.length() > maxLength){
-                    description = description.substring(0, maxLength);
+
+                SyndContent content = syndEntry.getDescription();
+                if(content != null){
+                    String description = content.getValue();
+
+                    int maxLength = 20000;
+                    if(description.length() > maxLength){
+                        description = description.substring(0, maxLength);
+                    }
+                    item.setDescription(description);
                 }
-                item.setDescription(description);
                 item.setPubDate(syndEntry.getPublishedDate());
                 item.setGuid(syndEntry.getUri());
+                item.setCreateDate(new Date());
 
                 itemRepository.save(item);
             }

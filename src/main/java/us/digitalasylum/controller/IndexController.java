@@ -59,7 +59,7 @@ public class IndexController {
         //Iterable<Item> itemList = itemRepository.findByChannel_Feed_Category_Id(categoryId, itemSort);
         //Iterable<Item> itemList = itemRepository.findByChannel_Feed_Category_IdOrderByPubDateDesc(categoryId);
 
-        Pageable page = new PageRequest(0, 40, new Sort(Sort.Direction.DESC, "pubDate"));
+        Pageable page = new PageRequest(0, 40, new Sort(Sort.Direction.DESC, "createDate"));
         Iterable<Item> itemList = itemRepository.findByChannel_Feed_Category_Id(categoryId, page);
 
 

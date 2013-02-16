@@ -23,14 +23,7 @@ public class Item {
     private Date pubDate;
     @Column(unique=true)
     private String guid;
-
-    public String getGuid() {
-        return guid;
-    }
-
-    public void setGuid(String guid) {
-        this.guid = guid;
-    }
+    private Date createDate;
 
     public Item(){
 
@@ -42,6 +35,22 @@ public class Item {
         this.link = link;
         this.description = description;
         this.channel = channel;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getGuid() {
+        return guid;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid;
     }
 
     public Date getPubDate() {

@@ -6,9 +6,10 @@
 
 <style>
 
-    #container .col1 { width: 380px; }
-    #container .col2 { width: 780px; }
-    #container .col3 { width: 1180px; }
+    #container .col1 { min-width: 250px; }
+    #container .col2 { min-width: 250px; }
+    /*#container .col3 { width: 1180px; }*/
+
 
     .item{
         border-top: 4px solid #8c8cbd;
@@ -53,6 +54,13 @@
         clear: both;
     }
 
+    .content p a img{
+        margin-right: 5px;
+    }
+    .content a img{
+        margin-right: 5px;
+    }
+
     .feedflare{
         display: none;
     }
@@ -70,6 +78,10 @@
                 columnWidth: 400
             });
         });
+
+        $(".col1").width('30%');
+        $(".col2").width('60%');
+        $(".col3").width('90%');
 
     });
 
