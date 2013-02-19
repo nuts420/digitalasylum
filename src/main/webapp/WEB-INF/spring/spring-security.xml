@@ -36,6 +36,7 @@
                 <!--<user name="admin" password="7c4a8d09ca3762af61e59520943dc26494f8941b" authorities="ROLE_USER" />-->
                 <user name="https://www.google.com/accounts/o8/id?id=AItOawnkiNWFgvRrzH3Xc2lRWaEx1QhTkmenpi8" password="" authorities="ROLE_USER, ROLE_ADMIN" />
                 <user name="https://www.google.com/accounts/o8/id?id=AItOawnfjykv7UXHcLQp1Ux6n11_n4UdkDBapRo" password="" authorities="ROLE_USER, ROLE_ADMIN" />
+                <user name="https://www.google.com/accounts/o8/id?id=AItOawmfJDLvRvlUfJ3ET9PsUkZ4A2Zq82bBrcM" password="" authorities="ROLE_USER, ROLE_ADMIN" />
             </user-service>
         </authentication-provider>
     </authentication-manager>

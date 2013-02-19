@@ -6,9 +6,9 @@
 
 <style>
 
-    #container .col1 { min-width: 250px; }
-    #container .col2 { min-width: 250px; }
-    /*#container .col3 { width: 1180px; }*/
+    #container .col1 { min-width: 250px; width: 30%; box-sizing: border-box;}
+    #container .col2 { min-width: 250px; width: 60%; box-sizing: border-box;}
+    #container .col3 { min-width: 250px; width: 90%; box-sizing: border-box;}
 
 
     .item{
@@ -75,13 +75,9 @@
 
         $container.imagesLoaded( function(){
             $container.masonry({
-                columnWidth: 400
+                columnWidth: 25
             });
         });
-
-        $(".col1").width('30%');
-        $(".col2").width('60%');
-        $(".col3").width('90%');
 
     });
 
