@@ -79,6 +79,18 @@
             });
         });
 
+        $(".titleLink").fancybox({
+            maxWidth	: 800,
+            maxHeight	: 600,
+            fitToView	: false,
+            width		: '70%',
+            height		: '70%',
+            autoSize	: false,
+            closeClick	: false,
+            openEffect	: 'elastic',
+            openSpeed   : 'slow',
+            closeEffect	: 'elastic'
+        });
     });
 
 /*    $(function(){
@@ -111,7 +123,7 @@
 
         <div class="item ${style}">
 
-            <a class="titleLink"href="${item.link}" target="_blank">${item.title}</a>
+            <a class="titleLink" data-fancybox-type="iframe" href="${item.link}">${item.title}</a>
             <div style="display: table-row; background-color: #f3f3f2">
 
                 <div class="title">

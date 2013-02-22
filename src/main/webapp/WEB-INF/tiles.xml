@@ -7,9 +7,9 @@
         <put-attribute name="title" value="" />
         <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
         <put-attribute name="style" value="/css/default.css" />
-        <put-attribute name="jQueryUIStyle" value="/css/smoothness/jquery-ui-1.9.2.custom.css" />
-        <put-attribute name="jQuery" value="/js/jquery-1.8.3.js" />
-        <put-attribute name="jQueryUI" value="/js/jquery-ui-1.9.2.custom.js" />
+        <put-attribute name="jQueryUIStyle" value="" />
+        <put-attribute name="jQuery" value="" />
+        <put-attribute name="jQueryUI" value="" />
         <put-attribute name="menu" value="/WEB-INF/jsp/layout/menu.jsp" />
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
