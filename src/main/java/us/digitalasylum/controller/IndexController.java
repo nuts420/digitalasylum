@@ -1,5 +1,8 @@
 package us.digitalasylum.controller;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +22,9 @@ import us.digitalasylum.repository.entities.Item;
 import us.digitalasylum.service.FeedService;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
 @Controller
@@ -63,6 +69,29 @@ public class IndexController {
         Iterable<Item> itemList = itemRepository.findByChannel_Feed_Category_Id(categoryId, page);
 
 
+        mav.addObject("items", itemList);
+
+        return mav;
+    }
+
+    @RequestMapping("category/{categoryId}/date/{date}")
+    public ModelAndView index(@PathVariable("categoryId") Long categoryId, @PathVariable("date") String date)
+    {
+        ModelAndView mav = new ModelAndView("public.item");
+
+        Sort sort = new Sort(Sort.Direction.ASC, "ordinal");
+        Iterable<Category> categories = categoryRepository.findAll(sort);
+        mav.addObject("categories", categories);
+        mav.addObject("date", date);
+
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("MM-dd-yyyy");
+        DateTime dt = formatter.parseDateTime(date);
+
+        DateTime startDate = new DateTime(dt).toDateMidnight().toDateTime();
+        DateTime endDate = startDate.plusDays(1);
+
+        Sort itemSort = new Sort(Sort.Direction.DESC, "pubDate");
+        Iterable<Item> itemList = itemRepository.findByChannel_Feed_Category_IdAndCreateDateBetween(categoryId, startDate.toDate(), endDate.toDate(), itemSort);
         mav.addObject("items", itemList);
 
         return mav;

@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -18,7 +19,7 @@
         display: table;
     }
     .pubDate{
-        font-size: .5em;
+        font-size: .6em;
         margin: 0;
     }
     .sourceLink{
@@ -75,7 +76,7 @@
 
         $container.imagesLoaded( function(){
             $container.masonry({
-                columnWidth: 25
+                columnWidth: 50
             });
         });
 
@@ -109,10 +110,10 @@
 
     <c:forEach var="item" items="${items}">
         <c:choose>
-            <c:when test="${fn:length(item.description) > 3000}">
+            <c:when test="${fn:length(item.description) > 5000}">
                 <c:set var="style" value="col3" />
             </c:when>
-            <c:when test="${fn:length(item.description) > 1500}">
+            <c:when test="${fn:length(item.description) > 2500}">
                 <c:set var="style" value="col2" />
             </c:when>
             <c:otherwise>
@@ -127,7 +128,7 @@
             <div style="display: table-row; background-color: #f3f3f2">
 
                 <div class="title">
-                    <p class="pubDate">${item.pubDate}</p>
+                    <p class="pubDate"><fmt:formatDate value="${item.pubDate}" pattern="MM-dd-yyyy HH:mm"/> </p>
                 </div>
                 <div class="logo">
                     <c:choose>

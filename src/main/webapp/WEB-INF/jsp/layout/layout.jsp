@@ -31,6 +31,8 @@
 <style>
     #layout_menu{
         vertical-align: top;
+        width: 156px;
+        overflow: hidden;
     }
     #body{
         padding: 20px;
@@ -41,18 +43,24 @@
     #footer{
         text-align: center;
     }
+    #layout_table{
+        table-layout: fixed;
+    }
+    #layout_body{
+        width: 100%;
+        vertical-align: top;
+    }
 
 </style>
 </head>
 <body>
-<table>
+<table id="layout_table">
     <tr>
-        <td colspan="2"><tiles:insertAttribute name="header" />
-        </td>
+        <td colspan="2"><tiles:insertAttribute name="header" /></td>
     </tr>
     <tr>
-        <td width="300" id="layout_menu"><tiles:insertAttribute name="menu" /></td>
-        <td width="100%" style="vertical-align: top;">
+        <td id="layout_menu"><tiles:insertAttribute name="menu" /></td>
+        <td id="layout_body">
             <div id="body"><tiles:insertAttribute name="body" /></div>
         </td>
     </tr>
