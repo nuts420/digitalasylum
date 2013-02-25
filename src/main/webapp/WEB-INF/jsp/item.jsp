@@ -81,11 +81,11 @@
         });
 
         $(".titleLink").fancybox({
-            maxWidth	: 800,
-            maxHeight	: 600,
+            //maxWidth	: 800,
+            //maxHeight	: 600,
             fitToView	: false,
-            width		: '70%',
-            height		: '70%',
+            width		: '90%',
+            height		: '90%',
             autoSize	: false,
             closeClick	: false,
             openEffect	: 'elastic',
@@ -93,14 +93,6 @@
             closeEffect	: 'elastic'
         });
     });
-
-/*    $(function(){
-        $('#container').masonry({
-            // options
-            itemSelector : '.item',
-            columnWidth : 270
-        });
-    });*/
 
 </script>
 
