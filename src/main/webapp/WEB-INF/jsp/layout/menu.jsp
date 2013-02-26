@@ -21,18 +21,19 @@
 </script>
 <style>
 
-    .ui-menu .ui-menu-item a {font-size: .85em;}
+    .ui-menu .ui-menu-item a {font-size: .75em;}
     li p {
-        font-size: .85em;
+        font-size: .75em;
         padding-left: 5px;
     }
-    #datepicker{font-size: .85em;}
-    #ui-datepicker-div{font-size: .85em;}
+    #datepicker{font-size: .75em;}
+    #ui-datepicker-div{font-size: .75em;}
     #menu_box{
         width: 156px;
     }
     #menu{
         width: 150px;
+        position: fixed;
     }
 </style>
 

@@ -1,6 +1,22 @@
 body
 {
-    background-color: #eeeeee;
+    /* IE10 Consumer Preview */
+    background-image: -ms-linear-gradient(top, #eeeeee 0%, #CCCCCC 100%);
+
+    /* Mozilla Firefox */
+    background-image: -moz-linear-gradient(top, #eeeeee 0%, #CCCCCC 100%);
+
+    /* Opera */
+    background-image: -o-linear-gradient(top, #eeeeee 0%, #CCCCCC 100%);
+
+    /* Webkit (Safari/Chrome 10) */
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eeeeee), color-stop(1, #CCCCCC));
+
+    /* Webkit (Chrome 11+) */
+    background-image: -webkit-linear-gradient(top, #eeeeee 0%, #CCCCCC 100%);
+
+    /* W3C Markup, IE10 Release Preview */
+    background-image: linear-gradient(to bottom, #eeeeee 0%, #CCCCCC 100%);
     font: normal 100% Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;

@@ -32,7 +32,6 @@
     #layout_menu{
         vertical-align: top;
         width: 156px;
-        overflow: hidden;
     }
     #body{
         padding: 20px;

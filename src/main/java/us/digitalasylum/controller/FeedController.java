@@ -51,7 +51,7 @@ public class FeedController {
         Feed feed = new Feed(name, url, category);
         feed  = feedRepository.save(feed);
 
-        feedService.fetchItems(feed.getId());
+        //feedService.fetchItems(feed.getId());
 
         return "redirect:/admin/feed";
     }

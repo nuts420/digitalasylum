@@ -7,15 +7,18 @@
 
 <style>
 
-    #container .col1 { min-width: 250px; width: 30%; box-sizing: border-box;}
-    #container .col2 { min-width: 250px; width: 60%; box-sizing: border-box;}
-    #container .col3 { min-width: 250px; width: 90%; box-sizing: border-box;}
+    #container .col1 { min-width: 250px; width: 30%;}
+    #container .col2 { min-width: 250px; width: 60%;}
+    #container .col3 { min-width: 250px; width: 90%;}
 
+    #container .col1 img{ max-width: 100%;}
+    #container .col2 img{ max-width: 100%;}
+    #container .col3 img{ max-width: 100%;}
 
     .item{
         border-top: 4px solid #8c8cbd;
         float: left;
-        margin: 10px;
+        margin-bottom: 20px;
         display: table;
     }
     .pubDate{
