@@ -1,9 +1,7 @@
 package us.digitalasylum.service;
 
 
-import com.sun.syndication.feed.synd.SyndContent;
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.*;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
@@ -68,13 +66,24 @@ public class FeedService {
             channel = new Channel();
             channel.setTitle(feedSrc.getTitle());
             channel.setDescription(feedSrc.getDescription());
-            channel.setLink(feedSrc.getLink());
+
+            if(feedSrc.getLink() != null){
+                channel.setLink(feedSrc.getLink());
+            }
+            else if(feedSrc.getLinks().size() > 0){
+                SyndLink link = (SyndLink) feedSrc.getLinks().get(0);
+                channel.setLink(link.getHref());
+            }
+
             if(feedSrc.getImage() != null)
             {
                 channel.setImageTitle(feedSrc.getImage().getTitle());
                 channel.setImageLink(feedSrc.getImage().getLink());
                 channel.setImageUrl(feedSrc.getImage().getUrl());
             }
+/*            else if(){
+
+            }*/
             channel.setFeed(feed);
 
             channel = channelRepository.save(channel);
@@ -95,6 +104,11 @@ public class FeedService {
                 item.setChannel(channel);
 
                 SyndContent content = syndEntry.getDescription();
+
+                if(content == null && syndEntry.getContents().size() > 0){
+                    content = (SyndContent) syndEntry.getContents().get(0);
+                }
+
                 if(content != null){
                     String description = content.getValue();
 

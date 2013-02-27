@@ -11,9 +11,9 @@
     #container .col2 { min-width: 250px; width: 60%;}
     #container .col3 { min-width: 250px; width: 90%;}
 
-    #container .col1 img{ max-width: 100%;}
-    #container .col2 img{ max-width: 100%;}
-    #container .col3 img{ max-width: 100%;}
+    #container .col1 img{ max-width: 100%; height: auto;}
+    #container .col2 img{ max-width: 100%; height: auto;}
+    #container .col3 img{ max-width: 100%; height: auto;}
 
     .item{
         border-top: 4px solid #8c8cbd;
