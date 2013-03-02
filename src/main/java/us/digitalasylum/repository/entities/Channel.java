@@ -21,7 +21,7 @@ public class Channel {
     @Column(length=500)
     private String description;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Feed feed;
     private String imageUrl;
     private String imageTitle;

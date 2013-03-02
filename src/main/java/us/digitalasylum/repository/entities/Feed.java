@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Feed {
@@ -18,8 +19,8 @@ public class Feed {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdated;
     private String name;
-    @OneToOne(mappedBy = "feed", cascade = CascadeType.ALL)
-    private Channel channel;
+    @OneToMany(mappedBy = "feed", cascade = CascadeType.ALL)
+    private List<Channel> channels;
     @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
 
@@ -41,12 +42,12 @@ public class Feed {
         this.category = category;
     }
 
-    public Channel getChannel() {
-        return channel;
+    public List<Channel> getChannel() {
+        return channels;
     }
 
-    public void setChannel(Channel channel) {
-        this.channel = channel;
+    public void setChannels(List<Channel> channels) {
+        this.channels = channels;
     }
 
     public Date getLastUpdated() {
